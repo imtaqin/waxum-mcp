@@ -17,7 +17,7 @@ that already-paired session.
 |---|---|
 | `send_message` | Send a text message |
 | `send_file` | Send a local file (image/video/audio/document/sticker), kind auto-detected from mimetype |
-| `get_messages` | Read a chat's recent history, or search it by keyword — includes sender push_name and media pointers |
+| `get_messages` | Read a chat's recent history, or search it by keyword — includes sender push_name, media pointers, and reply/quote linkage |
 | `download_media` | Download a message's media to local disk, returns the file path |
 | `list_groups` | List groups this session is in, with JIDs and members |
 | `list_chats` | List/search known contacts by name, phone, or push_name |
