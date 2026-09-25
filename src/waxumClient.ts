@@ -32,6 +32,10 @@ export interface MessageHit {
   msg_timestamp: string;
   push_name: string | null;
   media: MessageMedia | null;
+  /** WhatsApp message id this message is replying to, or null if it isn't a reply. */
+  quoted_message_id: string | null;
+  /** Sender of the quoted message, or null if not a reply / not reported. */
+  quoted_sender_jid: string | null;
 }
 
 export interface MessageSearchResponse {

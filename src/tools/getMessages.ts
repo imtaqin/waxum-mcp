@@ -6,7 +6,7 @@ import type { MessageHit } from '../waxumClient.js';
 export function registerGetMessages(server: McpServer, ctx: Ctx): void {
   server.tool(
     'get_messages',
-    'Read message history for a chat or group. Without `q`, returns the most recent messages newest-first. With `q`, full-text searches that keyword within the chat instead. Each message includes the sender\'s push_name (display name) and, for media messages, a `media` object — pass that whole object to download_media to fetch the actual file.',
+    'Read message history for a chat or group. Without `q`, returns the most recent messages newest-first. With `q`, full-text searches that keyword within the chat instead. Each message includes the sender\'s push_name (display name), a `media` object for media messages (pass it whole to download_media to fetch the file), and `quoted_message_id`/`quoted_sender_jid` when the message is a reply — a bare "yes" or "this one" makes no sense on its own, so when those are non-null, find the quoted message (match `quoted_message_id` against another message\'s `message_id` in this same history, fetching more history if it is not already in the page you have) before answering or acting on the reply.',
     {
       chat_jid: z.string().describe('Chat JID (DM partner or group JID)'),
       q: z.string().optional().describe('Keyword to search for within this chat, instead of listing recent messages'),
