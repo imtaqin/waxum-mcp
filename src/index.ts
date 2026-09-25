@@ -14,6 +14,7 @@ import { registerDownloadMedia } from './tools/downloadMedia.js';
 import { registerListGroups } from './tools/listGroups.js';
 import { registerListChats } from './tools/listChats.js';
 import { registerSessionStatus } from './tools/sessionStatus.js';
+import { registerGetDocs } from './tools/getDocs.js';
 
 async function main() {
   const config = loadConfig();
@@ -35,7 +36,7 @@ async function main() {
   const client = new WaxumClient(baseUrl, token);
   const ctx: Ctx = { client, sessionId: config.sessionId, mediaDir: config.mediaDir };
 
-  const server = new McpServer({ name: 'waxum-mcp', version: '0.1.0' });
+  const server = new McpServer({ name: 'waxum-mcp', version: '0.2.0' });
   registerSendMessage(server, ctx);
   registerSendFile(server, ctx);
   registerGetMessages(server, ctx);
@@ -43,6 +44,7 @@ async function main() {
   registerListGroups(server, ctx);
   registerListChats(server, ctx);
   registerSessionStatus(server, ctx);
+  registerGetDocs(server);
 
   const shutdown = () => {
     child?.kill();
