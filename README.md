@@ -22,6 +22,7 @@ that already-paired session.
 | `list_groups` | List groups this session is in, with JIDs and members |
 | `list_chats` | List/search known contacts by name, phone, or push_name |
 | `session_status` | Check connection/login status |
+| `get_docs` | Fetch waxum's live API docs (index, or a topic's full page) — look this up before guessing at a request shape or enum value |
 
 ## Configuration
 
